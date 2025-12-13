@@ -1,0 +1,5 @@
+{
+  "name": "Chrome HTTP Debugger & Client",
+  "description": "A Manifest V3 DevTools extension to intercept, edit, debug, and replay HTTP requests with a Postman-like interface.",
+  "requestFramePermissions": []
+}
