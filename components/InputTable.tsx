@@ -2,7 +2,6 @@
 import React from 'react';
 import { KeyValue } from '../types';
 import { generateId } from '../utils';
-import { Button } from './Button';
 
 interface InputTableProps {
   items: KeyValue[];
@@ -32,6 +31,13 @@ export const InputTable: React.FC<InputTableProps> = ({ items, onChange, title, 
     }
     
     onChange(newItems);
+  };
+
+  const handleFileChange = (id: string, file: File | null) => {
+      const newItems = items.map(item => 
+        item.id === id ? { ...item, value: file ? file.name : '', file: file || undefined } : item
+      );
+      onChange(newItems);
   };
 
   const handleRemove = (id: string) => {
@@ -83,14 +89,34 @@ export const InputTable: React.FC<InputTableProps> = ({ items, onChange, title, 
               className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-green-500 focus:outline-none transition-colors"
             />
           </div>
-          <div className="flex-1 px-1 relative">
-             <input 
-              type="text" 
-              value={item.value} 
-              placeholder="Value"
-              onChange={(e) => handleChange(item.id, 'value', e.target.value)}
-              className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-green-500 focus:outline-none transition-colors"
-            />
+          <div className="flex-1 px-1 relative flex space-x-1">
+             {item.type === 'file' ? (
+                 <div className="flex-1 relative">
+                    <input 
+                        type="file"
+                        onChange={(e) => handleFileChange(item.id, e.target.files ? e.target.files[0] : null)}
+                        className="w-full text-xs text-gray-500 border border-gray-300 rounded py-1 px-1"
+                    />
+                 </div>
+             ) : (
+                <input 
+                    type="text" 
+                    value={item.value} 
+                    placeholder="Value"
+                    onChange={(e) => handleChange(item.id, 'value', e.target.value)}
+                    className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-green-500 focus:outline-none transition-colors"
+                />
+             )}
+             
+             {/* Type Selector Dropdown for Body items */}
+             <select 
+                value={item.type || 'text'}
+                onChange={(e) => handleChange(item.id, 'type', e.target.value)}
+                className="text-[10px] border border-gray-300 rounded px-1 text-gray-600 bg-gray-50 focus:outline-none"
+             >
+                 <option value="text">Text</option>
+                 <option value="file">File</option>
+             </select>
           </div>
           <div className="w-8 flex justify-center pt-2">
             {/* Don't show delete button for the last empty row unless it has content */}

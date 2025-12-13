@@ -7,6 +7,7 @@ export interface KeyValue {
   value: string;
   enabled: boolean;
   type?: 'text' | 'file'; // For form-data
+  file?: File; // Store the actual file object
 }
 
 export interface HttpRequest {

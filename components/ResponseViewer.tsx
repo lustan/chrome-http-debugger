@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { HttpResponse } from '../types';
 import { formatBytes } from '../utils';
@@ -31,10 +32,10 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({ response, error 
 
   // Determine status color
   const statusColor = response.status >= 200 && response.status < 300 
-    ? 'text-green-600' 
+    ? 'text-green-700 bg-green-100' 
     : response.status >= 400 
-      ? 'text-red-600' 
-      : 'text-yellow-600';
+      ? 'text-red-700 bg-red-100' 
+      : 'text-yellow-700 bg-yellow-100';
 
   let formattedBody = response.body;
   try {
@@ -48,11 +49,22 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({ response, error 
   return (
     <div className="flex flex-col h-full bg-white">
       {/* Status Bar */}
-      <div className="p-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
-        <div className="flex space-x-4">
-          <span className={`font-bold ${statusColor}`}>{response.status} {response.statusText}</span>
-          <span className="text-gray-500 text-sm">{response.time} ms</span>
-          <span className="text-gray-500 text-sm">{formatBytes(response.size)}</span>
+      <div className="p-3 border-b border-gray-200 bg-white shadow-sm z-10">
+        <div className="flex items-center space-x-6">
+            <div className="flex flex-col">
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Status</span>
+                <span className={`px-2 py-0.5 rounded text-xs font-bold ${statusColor}`}>
+                    {response.status} {response.statusText}
+                </span>
+            </div>
+            <div className="flex flex-col">
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Time</span>
+                <span className="text-xs font-medium text-gray-700">{response.time} ms</span>
+            </div>
+            <div className="flex flex-col">
+                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Size</span>
+                <span className="text-xs font-medium text-gray-700">{formatBytes(response.size)}</span>
+            </div>
         </div>
       </div>
 

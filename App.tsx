@@ -162,7 +162,13 @@ const App: React.FC = () => {
             options.body = usp;
         } else if (activeRequest.bodyType === 'form-data') {
             const fd = new FormData();
-            activeRequest.bodyForm.filter(f => f.enabled).forEach(f => fd.append(f.key, f.value));
+            activeRequest.bodyForm.filter(f => f.enabled).forEach(f => {
+                if (f.type === 'file' && f.file) {
+                    fd.append(f.key, f.file);
+                } else {
+                    fd.append(f.key, f.value);
+                }
+            });
             options.body = fd;
         }
       }
@@ -224,7 +230,8 @@ const App: React.FC = () => {
       const tab = tabs.find(t => t.id === reqId);
       if (!tab || !tab.data) return;
 
-      const reqToSave = { ...tab.data, id: generateId(), collectionId: colId }; // Create NEW request copy
+      // reuse current ID, just assign collection ID
+      const reqToSave = { ...tab.data, collectionId: colId }; 
       
       const updatedCols = collections.map(c => {
           if (c.id === colId) {
@@ -236,7 +243,9 @@ const App: React.FC = () => {
       setCollections(updatedCols);
       chrome.storage.local.set({ collections: updatedCols });
       setSidebarTab('collections');
-      openRequestInTab(reqToSave);
+      
+      // Update the current tab to reflect it's now part of a collection
+      updateActiveRequest(reqToSave);
   };
 
   // --- Sidebar & CRUD Actions ---

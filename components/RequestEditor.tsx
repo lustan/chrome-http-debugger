@@ -29,6 +29,16 @@ export const RequestEditor: React.FC<RequestEditorProps> = ({ request, onRequest
       setBodyType(type);
       onRequestChange({ ...request, bodyType: type });
   };
+
+  const handleFormatJSON = () => {
+      try {
+          const parsed = JSON.parse(request.bodyRaw);
+          const formatted = JSON.stringify(parsed, null, 2);
+          onRequestChange({ ...request, bodyRaw: formatted });
+      } catch (e) {
+          alert('Invalid JSON');
+      }
+  };
   
   return (
     <div className="flex flex-col h-full bg-white border-r border-gray-200">
@@ -115,7 +125,15 @@ export const RequestEditor: React.FC<RequestEditorProps> = ({ request, onRequest
 
                  {bodyType === 'raw' && (
                    <div className="h-full flex flex-col">
-                       <div className="flex justify-end mb-1">
+                       <div className="flex justify-between mb-1 items-center">
+                           <div className="flex space-x-2">
+                                <button 
+                                    onClick={handleFormatJSON}
+                                    className="text-[10px] bg-gray-100 hover:bg-gray-200 text-gray-600 px-2 py-1 rounded border border-gray-200"
+                                >
+                                    Format JSON
+                                </button>
+                           </div>
                            <select className="text-xs border border-gray-200 rounded p-1 text-gray-600 focus:outline-none">
                                <option>JSON</option>
                                <option>Text</option>
