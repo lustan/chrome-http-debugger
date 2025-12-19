@@ -149,7 +149,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="h-10 px-3 border-b border-gray-200 bg-white flex items-center justify-between">
          <div className="flex items-center space-x-2">
             <Logo size={18} className="text-green-600" />
-            <span className="font-bold text-gray-700 text-sm">CaptureAPI</span>
+            <span className="font-bold text-gray-700 text-sm">CaptureApi</span>
          </div>
          <div className="flex space-x-1 items-center">
             <button onClick={onImportCurl} className="p-1.5 text-gray-500 hover:bg-gray-100 rounded" title="Import cURL">
