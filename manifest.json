@@ -1,8 +1,8 @@
 
 {
   "manifest_version": 3,
-  "name": "CaptureApi HTTP Client - Api Testing Tool",
-  "version": "1.0.5",
+  "name": "XApi HTTP Client - Api Testing Tool",
+  "version": "1.0.6",
   "description": "Intercept, debug & replay HTTP requests. A comprehensive API client with collections and cURL support inside Chrome DevTools.",
   "permissions": [
     "storage",
@@ -26,7 +26,7 @@
   "devtools_page": "devtools.html",
   "action": {
     "default_popup": "popup.html",
-    "default_title": "CaptureApi HTTP Client",
+    "default_title": "XApi HTTP Client",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png",

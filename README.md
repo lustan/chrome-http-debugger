@@ -1,8 +1,8 @@
-# ⚡ CaptureApi HTTP Client
+# ⚡ XApi HTTP Client
 
 > **Professional HTTP Debugging & Replay Tool for Chrome**
 
-CaptureApi is a high-performance, open-source Chrome Extension (Manifest V3) that brings a powerful, Postman-like experience directly into your browser's DevTools. It specializes in intercepting, debugging, editing, and replaying HTTP requests with unique support for modifying sensitive headers like `Cookie` and `Origin`.
+XApi is a high-performance, open-source Chrome Extension (Manifest V3) that brings a powerful, Postman-like experience directly into your browser's DevTools. It specializes in intercepting, debugging, editing, and replaying HTTP requests with unique support for modifying sensitive headers like `Cookie` and `Origin`.
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 ![Version](https://img.shields.io/badge/version-1.0.5-green)
@@ -14,11 +14,11 @@ CaptureApi is a high-performance, open-source Chrome Extension (Manifest V3) tha
 
 ### Full Dashboard Workspace
 *Manage collections and complex requests in a dedicated window.*
-<img width="100%" alt="CaptureApi Dashboard" src="https://github.com/user-attachments/assets/28878d8d-c4eb-4cd3-8973-dc6b240f858b" />
+<img width="100%" alt="XApi Dashboard" src="https://github.com/user-attachments/assets/28878d8d-c4eb-4cd3-8973-dc6b240f858b" />
 
 ### Integrated DevTools Panel
 *Debug directly while you browse without switching tabs.*
-<img width="100%" alt="CaptureApi DevTools" src="https://github.com/user-attachments/assets/c46f6d23-9c27-4de9-9bec-a7d13a13bc83" />
+<img width="100%" alt="XApi DevTools" src="https://github.com/user-attachments/assets/c46f6d23-9c27-4de9-9bec-a7d13a13bc83" />
 
 ---
 
@@ -50,8 +50,8 @@ CaptureApi is a high-performance, open-source Chrome Extension (Manifest V3) tha
 
 1.  **Clone & Build**:
     ```bash
-    git clone https://github.com/lustan/CaptureApi.git
-    cd CaptureApi
+    git clone https://github.com/lustan/XApi.git
+    cd XApi
     npm install
     npm run build
     ```
@@ -63,7 +63,7 @@ CaptureApi is a high-performance, open-source Chrome Extension (Manifest V3) tha
 ### How to Use
 
 1.  Open **Chrome DevTools** (`F12` or `Ctrl+Shift+I`).
-2.  Switch to the **CaptureApi** tab.
+2.  Switch to the **XApi** tab.
 3.  Interactions on the current page will appear in the **Captured** history.
 4.  Select any request to edit its body, headers, or query params and hit **SEND**.
 
@@ -86,4 +86,4 @@ We love contributions! Whether it's a bug report, a feature request, or a pull r
 Distributed under the **Apache 2.0 License**. See [LICENSE](LICENSE) for details.
 
 ---
-<p align="center">Made with ❤️ by the CaptureApi Team</p>
+<p align="center">Made with ❤️ by the XApi Team</p>

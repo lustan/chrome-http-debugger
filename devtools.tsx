@@ -1,7 +1,7 @@
 declare var chrome: any;
 
 chrome.devtools.panels.create(
-  "CaptureApi",
+  "XApi",
   "", // Icon path
   "panel.html",
   (panel: any) => {
